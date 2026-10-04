@@ -2,7 +2,7 @@
 
 A small e-commerce web application, built and then tested end to end as a QA portfolio project.
 
-> **Status:** 🚧 All Version 1 features are built. QA testing and documentation are next.
+> **Status:** 🚧 All Version 1 features are built and the test design is written. Manual test execution is next.
 
 ---
 
@@ -154,16 +154,30 @@ DB_PATH=/tmp/test-shop.db npm start
 
 ## QA Approach
 
-_To be written: test scope, test types (functional, negative, boundary, UI/responsive), environments, and entry/exit criteria. The full test plan will live in [`qa/`](qa/)._
+Testing is mainly manual, following written test cases, with a small Playwright suite for the most important journeys. The [test plan](qa/test-plan.md) covers scope, approach, environment, entry and exit criteria, and how defects are rated.
+
+- **Test types:** functional, negative, boundary value, UI and responsive, cross-browser (Chrome, Firefox, Safari), and basic security checks (input handling, access to other users' data)
+- **Test design:** 25 test scenarios broken down into 123 test cases, each with preconditions, steps, an expected result, and a priority
+- **Test data:** a reproducible starting state (`npm run seed`) plus documented valid, invalid, and boundary values
+
+| Area | Test cases | High | Medium | Low |
+|---|---|---|---|---|
+| [Catalog](qa/test-cases/01-catalog.md) | 23 | 9 | 9 | 5 |
+| [Accounts](qa/test-cases/02-accounts.md) | 27 | 11 | 11 | 5 |
+| [Cart](qa/test-cases/03-cart.md) | 26 | 14 | 10 | 2 |
+| [Checkout](qa/test-cases/04-checkout.md) | 30 | 12 | 14 | 4 |
+| [UI](qa/test-cases/05-ui.md) | 17 | 3 | 10 | 4 |
+| **Total** | **123** | **49** | **54** | **20** |
 
 ## Test Documentation
 
 | Document | Location | Status |
 |---|---|---|
-| Test plan | `qa/test-plan.md` | Not started |
-| Test cases | [`qa/test-cases/`](qa/test-cases/) | Not started |
-| Test data | [`qa/test-data/`](qa/test-data/) | Not started |
-| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | Not started |
+| Test plan | [`qa/test-plan.md`](qa/test-plan.md) | Written |
+| Test scenarios | [`qa/test-scenarios.md`](qa/test-scenarios.md) | Written |
+| Test cases | [`qa/test-cases/`](qa/test-cases/) | Written; not yet executed |
+| Test data | [`qa/test-data/test-data.md`](qa/test-data/test-data.md) | Written |
+| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | Template ready; testing not yet started |
 | Test execution report | `qa/test-execution-report.md` | Not started |
 
 ## Automated Tests
