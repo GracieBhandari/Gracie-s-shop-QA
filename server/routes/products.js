@@ -3,11 +3,14 @@
 
 const express = require('express');
 const db = require('../db/database');
+const { MAX_QUANTITY_PER_PRODUCT } = require('../config');
 
 const router = express.Router();
 
+// max_quantity: the most a customer can put in their cart
 const PRODUCT_COLUMNS = `
   p.id, p.name, p.description, p.emoji, p.price_cents, p.stock,
+  MIN(p.stock, ${MAX_QUANTITY_PER_PRODUCT}) AS max_quantity,
   c.slug AS category, c.name AS category_name
 `;
 

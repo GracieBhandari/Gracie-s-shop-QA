@@ -11,13 +11,13 @@ export async function getJSON(url) {
   return response.json();
 }
 
-// Sends JSON to our API. If the server returns an error, throws an Error
-// carrying the server's message, the status code, and any per-field errors.
-export async function postJSON(url, data = {}) {
+// Sends a POST, PUT, or DELETE request to our API. If the server returns an error,
+// throws an Error carrying the server's message, the status code, and any per-field errors.
+export async function sendJSON(method, url, data) {
   const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+    method,
+    headers: data === undefined ? {} : { 'Content-Type': 'application/json' },
+    body: data === undefined ? undefined : JSON.stringify(data),
   });
   const body = response.status === 204 ? null : await response.json();
   if (!response.ok) {
@@ -27,6 +27,10 @@ export async function postJSON(url, data = {}) {
     throw error;
   }
   return body;
+}
+
+export function postJSON(url, data = {}) {
+  return sendJSON('POST', url, data);
 }
 
 // Where to go after logging in, from ?next=/some/page.
@@ -63,6 +67,25 @@ export function productCardHtml(product) {
       </div>
     </a>
   `;
+}
+
+// A "−  2  +" control. The buttons are disabled at 1 and at the maximum.
+export function quantityControlHtml(quantity, max, productName) {
+  const name = escapeHtml(productName);
+  return `
+    <div class="quantity-control">
+      <button class="quantity-button" type="button" data-action="decrease" aria-label="Decrease quantity of ${name}"
+        ${quantity <= 1 ? 'disabled' : ''} data-testid="decrease-quantity">−</button>
+      <span class="quantity-value" data-testid="quantity-value" aria-live="polite">${quantity}</span>
+      <button class="quantity-button" type="button" data-action="increase" aria-label="Increase quantity of ${name}"
+        ${quantity >= max ? 'disabled' : ''} data-testid="increase-quantity">+</button>
+    </div>
+  `;
+}
+
+// Tells the header that the cart changed, so it can update the item count
+export function announceCartChange(cart) {
+  window.dispatchEvent(new CustomEvent('cart-updated', { detail: cart }));
 }
 
 export function messageHtml(text, type = '') {

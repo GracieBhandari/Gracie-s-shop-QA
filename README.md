@@ -2,7 +2,7 @@
 
 A small e-commerce web application, built and then tested end to end as a QA portfolio project.
 
-> **Status:** 🚧 In development. The product catalog and accounts are built; cart and checkout are next.
+> **Status:** 🚧 In development. The product catalog, accounts, and shopping cart are built; checkout is next.
 
 ---
 
@@ -41,7 +41,7 @@ Planned for Version 1:
 - [x] Product categories
 - [x] Product search
 - [x] Product details
-- [ ] Shopping cart (add, remove, change quantity, total calculation)
+- [x] Shopping cart (add, remove, change quantity, total calculation)
 - [x] User registration and login
 - [ ] Checkout
 - [ ] Order confirmation
@@ -118,6 +118,17 @@ Running `npm run seed` again resets all data, including any accounts you created
 | POST | `/api/auth/login` | Log in (`email`, `password`) |
 | POST | `/api/auth/logout` | Log out |
 | GET | `/api/auth/me` | Get the logged-in user, or `{ "user": null }` |
+| GET | `/api/cart` | Get the cart with item count and total (login required) |
+| POST | `/api/cart/items` | Add a product (`productId`, `quantity`) (login required) |
+| PUT | `/api/cart/items/:productId` | Change a product's quantity (`quantity`) (login required) |
+| DELETE | `/api/cart/items/:productId` | Remove a product from the cart (login required) |
+
+### Business Rules
+
+- The cart requires a logged-in user.
+- A customer can have at most **10** of any one product in their cart, and never more than the available stock.
+- Out-of-stock products cannot be added to the cart.
+- Prices are stored in cents; cart totals are calculated on the server.
 
 ## QA Approach
 

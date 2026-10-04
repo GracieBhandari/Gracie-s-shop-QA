@@ -50,6 +50,7 @@ const products = [
 db.exec('BEGIN');
 try {
   // Drop and recreate the tables so schema changes are picked up too
+  db.exec('DROP TABLE IF EXISTS cart_items');
   db.exec('DROP TABLE IF EXISTS users');
   db.exec('DROP TABLE IF EXISTS products');
   db.exec('DROP TABLE IF EXISTS categories');

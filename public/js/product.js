@@ -1,4 +1,6 @@
-import { getJSON, escapeHtml, formatPrice, messageHtml } from './common.js';
+import {
+  getJSON, postJSON, escapeHtml, formatPrice, messageHtml, quantityControlHtml, announceCartChange,
+} from './common.js';
 
 const pageEl = document.getElementById('product-page');
 const id = new URLSearchParams(window.location.search).get('id') || '';
@@ -16,6 +18,60 @@ function showNotFound() {
     ${messageHtml('We couldn’t find that product. It may have been removed.')}
     <p><a href="/products.html">← Back to all products</a></p>
   `;
+}
+
+// Quantity picker and "Add to cart" button. Out-of-stock products get a disabled button instead.
+function setUpAddToCart(product) {
+  const sectionEl = document.getElementById('add-to-cart');
+  const messageEl = document.getElementById('cart-message');
+
+  if (product.max_quantity === 0) {
+    sectionEl.innerHTML = '<button class="button button-large" type="button" disabled data-testid="add-to-cart-button">Out of stock</button>';
+    return;
+  }
+
+  let quantity = 1;
+
+  function render() {
+    sectionEl.innerHTML = `
+      ${quantityControlHtml(quantity, product.max_quantity, product.name)}
+      <button class="button button-large" type="button" data-action="add" data-testid="add-to-cart-button">Add to cart</button>
+    `;
+  }
+
+  sectionEl.addEventListener('click', async (event) => {
+    const button = event.target.closest('button');
+    const action = button?.dataset.action;
+
+    if (action === 'decrease' || action === 'increase') {
+      quantity += action === 'increase' ? 1 : -1;
+      render();
+      return;
+    }
+    if (action !== 'add') return;
+
+    button.disabled = true;
+    messageEl.className = 'cart-message';
+    try {
+      const cart = await postJSON('/api/cart/items', { productId: product.id, quantity });
+      announceCartChange(cart);
+      messageEl.classList.add('success');
+      messageEl.innerHTML = `Added ${quantity} to your cart. <a href="/cart.html" data-testid="view-cart-link">View cart</a>`;
+      quantity = 1;
+      render();
+    } catch (error) {
+      if (error.status === 401) {
+        // Visitors log in first, then come back to this product
+        window.location.href = `/login.html?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+        return;
+      }
+      messageEl.classList.add('error');
+      messageEl.textContent = error.status ? error.message : 'Something went wrong. Please try again.';
+      button.disabled = false;
+    }
+  });
+
+  render();
 }
 
 try {
@@ -39,9 +95,12 @@ try {
         <p class="product-price" data-testid="product-price">${formatPrice(product.price_cents)}</p>
         <p data-testid="product-description">${escapeHtml(product.description)}</p>
         ${stockHtml(product.stock)}
+        <div class="add-to-cart" id="add-to-cart"></div>
+        <p class="cart-message" id="cart-message" role="status" data-testid="cart-message"></p>
       </div>
     </article>
   `;
+  setUpAddToCart(product);
 } catch (error) {
   // 400 (bad id) and 404 (no such product) both mean "not found" to the shopper
   if (error.status === 400 || error.status === 404) {
