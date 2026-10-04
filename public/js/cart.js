@@ -59,6 +59,7 @@ function render(cart) {
           <span>Total</span>
           <span data-testid="cart-total">${formatPrice(cart.total_cents)}</span>
         </div>
+        <a class="button button-full" href="/checkout.html" data-testid="checkout-button">Proceed to checkout</a>
         <a class="continue-link" href="/products.html">← Continue shopping</a>
       </aside>
     </div>

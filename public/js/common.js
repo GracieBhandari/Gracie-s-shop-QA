@@ -69,6 +69,20 @@ export function productCardHtml(product) {
   `;
 }
 
+// Shows a message at the top of a form and one under each field that has a problem.
+// Each field needs an element with id "<fieldName>-error" under it.
+export function showFormErrors(form, formErrorEl, message, fieldErrors = {}) {
+  formErrorEl.textContent = message;
+  formErrorEl.hidden = !message;
+
+  for (const errorEl of form.querySelectorAll('.field-error')) {
+    const field = errorEl.id.replace(/-error$/, '');
+    const text = fieldErrors[field] || '';
+    errorEl.textContent = text;
+    form.elements[field].setAttribute('aria-invalid', text ? 'true' : 'false');
+  }
+}
+
 // A "−  2  +" control. The buttons are disabled at 1 and at the maximum.
 export function quantityControlHtml(quantity, max, productName) {
   const name = escapeHtml(productName);

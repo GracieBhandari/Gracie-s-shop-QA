@@ -6,6 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const authRouter = require('./routes/auth');
 const cartRouter = require('./routes/cart');
+const ordersRouter = require('./routes/orders');
 const categoriesRouter = require('./routes/categories');
 const productsRouter = require('./routes/products');
 
@@ -36,6 +37,7 @@ app.use(session({
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 app.use('/api/auth', authRouter);
 app.use('/api/cart', cartRouter);
+app.use('/api/orders', ordersRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/products', productsRouter);
 

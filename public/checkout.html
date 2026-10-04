@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout · Gracie's Shop</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/header.js"></script>
+  <script type="module" src="/js/checkout.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Gracie's Shop</a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/products.html">Shop</a>
+      </nav>
+      <form class="search-form" action="/products.html" role="search">
+        <input type="search" name="search" placeholder="Search products" aria-label="Search products" data-testid="search-input">
+        <button class="button" type="submit" data-testid="search-button">Search</button>
+      </form>
+      <div class="account-nav" id="account-nav" data-testid="account-nav"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Checkout</h1>
+    <div id="checkout-content">
+      <p class="message">Loading…</p>
+    </div>
+
+    <!-- Shown by checkout.js once we know the user is logged in and has items in their cart -->
+    <template id="checkout-template">
+      <div class="cart-layout">
+        <form class="checkout-form" id="checkout-form" novalidate>
+          <p class="form-error" id="form-error" role="alert" data-testid="form-error" hidden></p>
+
+          <fieldset>
+            <legend>Shipping address</legend>
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" aria-describedby="fullName-error" data-testid="full-name-input">
+              <p class="field-error" id="fullName-error" data-testid="full-name-error"></p>
+            </div>
+            <div class="field">
+              <label for="address">Street address</label>
+              <input id="address" name="address" type="text" autocomplete="street-address" aria-describedby="address-error" data-testid="address-input">
+              <p class="field-error" id="address-error" data-testid="address-error"></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" autocomplete="address-level2" aria-describedby="city-error" data-testid="city-input">
+                <p class="field-error" id="city-error" data-testid="city-error"></p>
+              </div>
+              <div class="field">
+                <label for="zipCode">ZIP code</label>
+                <input id="zipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" aria-describedby="zipCode-error" data-testid="zip-input">
+                <p class="field-error" id="zipCode-error" data-testid="zip-error"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment</legend>
+            <p class="demo-note" data-testid="demo-note">
+              This is a demo shop. No real payment is taken. Use the test card <strong>4242 4242 4242 4242</strong>
+              with any future expiry date and any 3-digit security code.
+            </p>
+            <div class="field">
+              <label for="cardNumber">Card number</label>
+              <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" aria-describedby="cardNumber-error" data-testid="card-number-input">
+              <p class="field-error" id="cardNumber-error" data-testid="card-number-error"></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="expiry">Expiry date</label>
+                <input id="expiry" name="expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" aria-describedby="expiry-error" data-testid="expiry-input">
+                <p class="field-error" id="expiry-error" data-testid="expiry-error"></p>
+              </div>
+              <div class="field">
+                <label for="cvc">Security code</label>
+                <input id="cvc" name="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" aria-describedby="cvc-error" data-testid="cvc-input">
+                <p class="field-error" id="cvc-error" data-testid="cvc-error"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <button class="button button-full" type="submit" data-testid="place-order-button">Place order</button>
+        </form>
+
+        <aside class="cart-summary" data-testid="order-summary">
+          <h2>Order summary</h2>
+          <ul class="summary-items" id="summary-items"></ul>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summary-total" data-testid="checkout-total"></span>
+          </div>
+          <a class="continue-link" href="/cart.html">← Back to cart</a>
+        </aside>
+      </div>
+    </template>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Gracie's Shop · A QA portfolio project</div>
+  </footer>
+</body>
+</html>

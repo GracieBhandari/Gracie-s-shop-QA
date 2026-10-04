@@ -2,7 +2,7 @@
 
 A small e-commerce web application, built and then tested end to end as a QA portfolio project.
 
-> **Status:** 🚧 In development. The product catalog, accounts, and shopping cart are built; checkout is next.
+> **Status:** 🚧 All Version 1 features are built. QA testing and documentation are next.
 
 ---
 
@@ -43,9 +43,9 @@ Planned for Version 1:
 - [x] Product details
 - [x] Shopping cart (add, remove, change quantity, total calculation)
 - [x] User registration and login
-- [ ] Checkout
-- [ ] Order confirmation
-- [ ] Responsive design (mobile, tablet, desktop)
+- [x] Checkout
+- [x] Order confirmation
+- [x] Responsive design (mobile, tablet, desktop)
 
 ## Tech Stack
 
@@ -75,8 +75,6 @@ Planned for Version 1:
 
 ## Getting Started
 
-_Setup instructions will be added once the application is built._
-
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) version 22.5 or later
@@ -104,6 +102,23 @@ Running `npm run seed` again resets all data, including any accounts you created
 |---|---|
 | `shopper@example.com` | `Password123` |
 
+### Test Card
+
+This is a demo shop and no real payment is taken. At checkout, use:
+
+| Card number | Expiry | Security code |
+|---|---|---|
+| `4242 4242 4242 4242` | Any future month, e.g. `12/30` | Any 3 digits, e.g. `123` |
+
+### Using a Separate Database
+
+Set `DB_PATH` to run the app against a different database file, for example to test without touching your own data:
+
+```bash
+DB_PATH=/tmp/test-shop.db npm run seed
+DB_PATH=/tmp/test-shop.db npm start
+```
+
 ### API Endpoints
 
 | Method | Endpoint | Description |
@@ -122,6 +137,8 @@ Running `npm run seed` again resets all data, including any accounts you created
 | POST | `/api/cart/items` | Add a product (`productId`, `quantity`) (login required) |
 | PUT | `/api/cart/items/:productId` | Change a product's quantity (`quantity`) (login required) |
 | DELETE | `/api/cart/items/:productId` | Remove a product from the cart (login required) |
+| POST | `/api/orders` | Place an order from the cart (login required) |
+| GET | `/api/orders/:id` | Get one of your own orders (login required) |
 
 ### Business Rules
 
@@ -129,6 +146,11 @@ Running `npm run seed` again resets all data, including any accounts you created
 - A customer can have at most **10** of any one product in their cart, and never more than the available stock.
 - Out-of-stock products cannot be added to the cart.
 - Prices are stored in cents; cart totals are calculated on the server.
+- At checkout, stock is checked again. Placing an order saves it, reduces stock, and empties the cart in a single database transaction.
+- Orders keep each product's name and price at the time of purchase.
+- Card numbers must pass the Luhn check. Only the last 4 digits are stored; the security code is never stored.
+- ZIP codes must be 5 digits (or ZIP+4, e.g. `12345-6789`). Expiry dates use `MM/YY` and must not be in the past.
+- Users can only see their own orders.
 
 ## QA Approach
 

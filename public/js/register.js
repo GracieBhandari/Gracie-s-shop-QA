@@ -1,23 +1,14 @@
-import { postJSON, safeNextUrl } from './common.js';
+import { postJSON, safeNextUrl, showFormErrors } from './common.js';
 
 const form = document.getElementById('register-form');
 const formError = document.getElementById('form-error');
 const submitButton = form.querySelector('button[type="submit"]');
-const FIELDS = ['name', 'email', 'password', 'confirmPassword'];
 
 // Keep ?next=... when switching to the login page
 document.getElementById('switch-link').href = `/login.html${window.location.search}`;
 
-// Shows a message at the top of the form and one under each field that has a problem
-function showErrors(message, fieldErrors = {}) {
-  formError.textContent = message;
-  formError.hidden = !message;
-
-  for (const field of FIELDS) {
-    const text = fieldErrors[field] || '';
-    document.getElementById(`${field}-error`).textContent = text;
-    form.elements[field].setAttribute('aria-invalid', text ? 'true' : 'false');
-  }
+function showErrors(message, fieldErrors) {
+  showFormErrors(form, formError, message, fieldErrors);
 }
 
 form.addEventListener('submit', async (event) => {

@@ -35,3 +35,27 @@ CREATE TABLE IF NOT EXISTS cart_items (
   quantity   INTEGER NOT NULL CHECK (quantity > 0),
   UNIQUE (user_id, product_id)
 );
+
+-- Only the last 4 card digits are stored, never the full card number or security code.
+CREATE TABLE IF NOT EXISTS orders (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id     INTEGER NOT NULL REFERENCES users(id),
+  full_name   TEXT    NOT NULL,
+  address     TEXT    NOT NULL,
+  city        TEXT    NOT NULL,
+  zip_code    TEXT    NOT NULL,
+  card_last4  TEXT    NOT NULL,
+  total_cents INTEGER NOT NULL,
+  created_at  TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Name and price are copied at purchase time, so later product changes don't alter past orders.
+CREATE TABLE IF NOT EXISTS order_items (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  order_id     INTEGER NOT NULL REFERENCES orders(id),
+  product_id   INTEGER NOT NULL REFERENCES products(id),
+  product_name TEXT    NOT NULL,
+  emoji        TEXT    NOT NULL,
+  price_cents  INTEGER NOT NULL,
+  quantity     INTEGER NOT NULL CHECK (quantity > 0)
+);

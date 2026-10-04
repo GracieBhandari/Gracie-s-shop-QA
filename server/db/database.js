@@ -5,7 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { DatabaseSync } = require('node:sqlite');
 
-const db = new DatabaseSync(path.join(__dirname, 'shop.db'));
+// DB_PATH lets tests use a separate database file, so they never touch your data
+const db = new DatabaseSync(process.env.DB_PATH || path.join(__dirname, 'shop.db'));
 
 db.exec('PRAGMA foreign_keys = ON');
 db.exec(fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8'));
