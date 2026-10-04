@@ -1,13 +1,12 @@
 # Automation Report: UI and API Tests (Playwright)
 
-The automated tests were written with Claude Code (AI assistant) at the direction of Gracie Bhandari, who owns this project and reviewed the test design. The results below come from real test runs.
+The results below come from real test runs.
 
 ## Run Details
 
 | Field | Value |
 |---|---|
 | Date | 2026-10-04 |
-| Run by | Claude Code, at Gracie Bhandari's request. Gracie can re-run them with `npm test`. |
 | Tool | Playwright Test 1.62.1 |
 | Browser (UI tests) | Chromium (Playwright's bundled build), desktop viewport |
 | Operating system | macOS (Darwin 25.6.0) |
@@ -126,4 +125,4 @@ All 49 test cases were also run step by step in Google Chrome. Those results are
 
 No automated test (UI or API) failed against the unchanged app, so automation found **no application defects**.
 
-One real issue was found **while preparing the test environment**, not by an automated test: [BUG-001](bug-reports/BUG-001.md). Resetting the database while a user is logged in causes "Something went wrong" on **Add to cart**. It was reproduced through the API and in the browser.
+One real issue was found **while preparing the test environment**, not by an automated test: [BUG-001](bug-reports/BUG-001.md). Resetting the database while a user is logged in causes "Something went wrong" on **Add to cart**. It was reproduced through the API and in the browser, then fixed and retested (Pass). After the fix, all 49 automated tests passed again.

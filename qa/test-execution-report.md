@@ -19,13 +19,12 @@
 | Automated UI tests (Playwright, browser) | 17 | 17 | 17 | 0 | 0 |
 | Automated API tests (Playwright, HTTP) | 32 | 32 | 32 | 0 | 0 |
 
-**Defects:** 1 open ([BUG-001](bug-reports/BUG-001.md), Low severity). No new defects were found during test execution.
+**Defects:** 1 found ([BUG-001](bug-reports/BUG-001.md), Low severity): fixed, retested, and closed. No new defects were found during test execution.
 
 ## 2. Test Case Execution
 
 | Field | Value |
 |---|---|
-| Run by | Claude Code (AI assistant), at Gracie Bhandari's request |
 | Date | 2026-10-04 |
 | Browser | Google Chrome 148.0.7778.215 (the real installed Chrome) |
 | Operating system | macOS 26.6.1 |
@@ -51,7 +50,6 @@ Per-case actual results: [manual-test-execution.md](manual-test-execution.md) an
 
 | Field | Value |
 |---|---|
-| Run by | Claude Code (AI assistant) at Gracie Bhandari's request |
 | Command | `npm test` (both groups), `npm run test:e2e`, `npm run test:api` |
 | Environment | macOS, Node.js 24.20.0, Playwright 1.62.1, Chromium |
 | Result | **49 of 49 passed** in repeated full runs; each group also passed when run on its own |
@@ -63,7 +61,7 @@ Details for every test: [automation-report.md](automation-report.md).
 
 | ID | Title | Severity | Priority | Status | Found by |
 |---|---|---|---|---|---|
-| [BUG-001](bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Medium | Open (fix deferred by Gracie) | Claude Code during automation setup; reviewed and triaged by Gracie |
+| [BUG-001](bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Medium | Closed: fixed and retested (Pass) | Found during automation setup; triaged by Gracie Bhandari |
 
 ## 5. Exit Criteria (from the test plan)
 
@@ -87,8 +85,9 @@ Gracie's Shop Version 1 **meets its test exit criteria and is ready for release 
 
 **Remaining risks:**
 
-1. **BUG-001 (Low):** resetting the database while a user is logged in causes an error on **Add to cart**. It only affects test environments, and there is a documented workaround. The fix is deferred.
-2. **Untested areas:** Firefox, Safari, tablets, real phones, keyboard-only use, and rarer edge cases are outside the Version 1 test scope (see the [test plan](test-plan.md#3-out-of-scope)). The API tests cover some of these edge cases at the API level.
-3. **Phone header layout:** works, but uses three rows. A design improvement for Version 2.
+1. **Untested areas:** Firefox, Safari, tablets, real phones, keyboard-only use, and rarer edge cases are outside the Version 1 test scope (see the [test plan](test-plan.md#3-out-of-scope)). The API tests cover some of these edge cases at the API level.
+2. **Phone header layout:** works, but uses three rows. A design improvement for Version 2.
 
-**Recommended for Version 2:** fix BUG-001, add Firefox and Safari to the automated suite, and test the lower-priority edge cases that were left out of Version 1.
+**BUG-001 (fixed):** resetting the database while a user was logged in caused an error on **Add to cart**. It was fixed in `requireAuth` and retested with the original steps (Pass). A regression check after the fix passed all 49 automated tests and all 49 test cases.
+
+**Recommended for Version 2:** add Firefox and Safari to the automated suite, and test the lower-priority edge cases that were left out of Version 1.

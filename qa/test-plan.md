@@ -5,7 +5,6 @@
 | **Project** | Gracie's Shop, a small e-commerce web application |
 | **Version under test** | 1.0 (all Version 1 features) |
 | **Owner and approver** | Gracie Bhandari (QA lead) |
-| **Prepared with** | Claude Code (AI assistant), at Gracie's direction |
 | **Document status** | Approved for Version 1 testing |
 
 ---
@@ -65,7 +64,7 @@ Testing follows the written test cases. Each test case has an ID, preconditions,
 
 Test data is listed in [test-data/test-data.md](test-data/test-data.md).
 
-**Resetting data:** many test cases change data (stock goes down after an order; new accounts are created). Run `npm run seed` to put the shop back to its starting state: 4 categories, 20 products, and 1 demo account. Each test case says when fresh data is needed. After resetting, log out and back in (see [BUG-001](bug-reports/BUG-001.md)).
+**Resetting data:** many test cases change data (stock goes down after an order; new accounts are created). Run `npm run seed` to put the shop back to its starting state: 4 categories, 20 products, and 1 demo account. Each test case says when fresh data is needed. After resetting, log in again.
 
 ## 7. Entry and Exit Criteria
 

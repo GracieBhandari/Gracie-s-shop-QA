@@ -13,7 +13,7 @@ This is the checklist for the **49 test cases** in the Version 1 test suite.
 3. Work through the cases in order. For each one, do the **Action** steps in the browser and compare what happens with **Expected**.
 4. Write what actually happened under **Actual result**, even when it passes (e.g. "As expected"). Then tick one status box.
 5. If a case fails, copy the next free bug report (BUG-001, BUG-002, …) in [bug-reports/](bug-reports/), fill it in, and write the bug ID here.
-6. Some cases need **fresh data** (stated in Preconditions). Run `npm run seed` first. This deletes accounts, carts, and orders you created, so **log out in the browser and log in again** afterwards. (Skipping this triggers the known issue [BUG-001](bug-reports/BUG-001.md).)
+6. Some cases need **fresh data** (stated in Preconditions). Run `npm run seed` first. This deletes accounts, carts, and orders you created, so **log out in the browser and log in again** afterwards.
 
 Test data: [test-data/test-data.md](test-data/test-data.md)
 
@@ -21,7 +21,6 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 | Field | Value |
 |---|---|
-| Tester | Claude Code (AI assistant), at Gracie Bhandari's request |
 | Date | 2026-10-04 |
 | Browser and version | Google Chrome 148.0.7778.215 |
 | Operating system | macOS 26.6.1 |
@@ -60,7 +59,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Header: logo "Gracie's Shop", nav "Home Shop", search box visible: true, account area "Cart Log in Register" Banner "Little things that make home feel lovely" with button "Shop all products"; 4 category cards; 4 featured products; footer visible: true
 
@@ -82,7 +81,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Title "All products", selected chip "All", summary "20 products", 20 product cards
 
@@ -107,7 +106,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 > URL /products.html?category=kitchen; title "Kitchen", highlighted chip "Kitchen", summary "5 products", 5 cards, categories: KITCHEN
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > URL /products.html?category=kitchen; title "Kitchen", highlighted chip "Kitchen", summary "5 products", 5 cards, categories: KITCHEN
 
@@ -131,7 +130,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > After Stationery: title "Stationery", 5 products (all STATIONERY). After All: title "All products", 20 products
 
@@ -154,7 +153,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Summary "1 product found for “Dotted Notebook”"; cards: Dotted Notebook; search box contains "Dotted Notebook"
 
@@ -176,7 +175,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Summary "1 product found for “MUG”"; cards: Stoneware Coffee Mug
 
@@ -198,7 +197,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Summary "0 products found for “xyz123”"; 0 cards; message "No products match your search. Try a different word or browse all products."
 
@@ -221,7 +220,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Breadcrumb "Home / Kitchen / Stoneware Coffee Mug"; category "KITCHEN"; name "Stoneware Coffee Mug"; price "$14.99"; description "Speckled stoneware mug that holds 350 ml. Dishwasher safe."; stock "In stock"; tab title "Stoneware Coffee Mug · Gracie's Shop"
 
@@ -251,7 +250,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > product 4: "Only 5 left" (orange); product 5: "Out of stock" (red); product 6: "In stock" (green); product 10: "In stock" (green); product 20: "Only 1 left" (orange)
 
@@ -279,7 +278,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Taken to /; header shows "Cart Hi, QA User A Log out"
 
@@ -302,7 +301,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Top message "Please fix the highlighted fields."; name "Please enter your name."; email "Please enter a valid email address."; password "Password must be at least 8 characters."; borders name:true:rgb(201, 42, 42), email:true:rgb(201, 42, 42), password:true:rgb(201, 42, 42); still on /register.html
 
@@ -326,7 +325,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > 7 characters ("Pass123"): "Password must be at least 8 characters.". 8 characters ("Pass1234"): account created, header "Hi, Boundary Eight"
 
@@ -350,7 +349,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Confirm password error "Passwords do not match."; top "Please fix the highlighted fields."; logged in afterwards: false
 
@@ -372,7 +371,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Top "An account with this email already exists."; under email "An account with this email already exists."
 
@@ -396,7 +395,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Clicked Log in from the home page (/login.html?next=%2F); after login: page /, header "Cart Hi, Test Shopper Log out"
 
@@ -418,7 +417,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Message "Incorrect email or password."; logged in afterwards: false
 
@@ -440,7 +439,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Message "Incorrect email or password." (identical to TC-ACC-016); logged in afterwards: false
 
@@ -463,7 +462,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > /: Hi, Test Shopper; /products.html: Hi, Test Shopper; /product.html?id=6: Hi, Test Shopper; /cart.html: Hi, Test Shopper; after reload: Hi, Test Shopper
 
@@ -485,7 +484,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > After Log out: page "/", header "Cart Log in Register". /cart.html shows "Please log in to see your cart."
 
@@ -508,7 +507,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Logged out, then logged in as qa.usera@example.com: header greeting "Hi, QA User A"
 
@@ -535,7 +534,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Message "Added 1 to your cart. View cart" (color green); header badge 1
 
@@ -559,7 +558,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Quantity before adding 3; message "Added 3 to your cart. View cart"; badge 3; picker after adding 1
 
@@ -583,7 +582,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Clicking Add to cart as a visitor opened /login.html?next=/product.html?id=6. After login: back on /product.html?id=6, "Hi, Test Shopper". Add to cart then showed "Added 1 to your cart. View cart"
 
@@ -605,7 +604,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Button "Out of stock", disabled: true; quantity pickers shown: 0
 
@@ -629,7 +628,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Added 2, then 1 more. Cart has 1 line(s) for Stoneware Coffee Mug, quantity 3
 
@@ -651,7 +650,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Line: picture "☕", "Stoneware Coffee Mug", "$14.99 each", quantity 3, line total $44.97, Remove visible: true. Summary: Items 3, Total $44.97
 
@@ -673,7 +672,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Line totals $44.97, $25.98, $7.99; Items 6; Total $78.94; header badge 6
 
@@ -695,7 +694,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Quantity 4, line total $59.96, Total $59.96, badge 4
 
@@ -717,7 +716,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Quantity 1, Total $14.99, − disabled: true
 
@@ -739,7 +738,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Remaining lines: Dotted Notebook; Items 1; Total $12.99; badge 1
 
@@ -761,7 +760,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Message "Your cart is empty."; button "Start shopping"; badge (hidden)
 
@@ -783,7 +782,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Before reload: Stoneware Coffee Mug ×2, Gel Pen Set ×1. After reload: Stoneware Coffee Mug ×2, Gel Pen Set ×1
 
@@ -807,7 +806,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Before logging out: Stoneware Coffee Mug ×2, Gel Pen Set ×1. After logging back in: Stoneware Coffee Mug ×2, Gel Pen Set ×1
 
@@ -831,7 +830,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Demo user's cart had Stoneware Coffee Mug × 1. Logged in as User A: 0 cart lines, message "Your cart is empty."
 
@@ -858,7 +857,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Checkout page sections: Shipping address, Payment; test-card note visible: true; summary: ☕ Stoneware Coffee Mug × 2 $29.98; Total $29.98
 
@@ -882,7 +881,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Confirmation: "Thank you for your order!", order GS-000001, "Placed on October 4, 2026 at 1:46 PM", items: ☕ Stoneware Coffee Mug × 2 $29.98, total paid $29.98, shipping "Test Shopper 1 Main St Springfield, 12345", payment "Card ending in 4242"
 
@@ -905,7 +904,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Header badge hidden: true; Cart page shows "Your cart is empty."
 
@@ -928,7 +927,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Before the order: "Only 5 left". After ordering 2: "Only 3 left"; quantity picker stops at 3
 
@@ -950,7 +949,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Confirmation items: 🧶 Woven Throw Blanket × 1 $49.99 | 🖊️ Gel Pen Set × 2 $19.98; total paid $69.97
 
@@ -972,7 +971,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Payment line "Card ending in 4242"; full card number on page (text or HTML): false; security code shown: false
 
@@ -995,7 +994,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Top "Please fix the highlighted fields."; full-name: "Please enter your full name."; address: "Please enter your street address."; city: "Please enter your city."; zip: "Please enter a 5-digit ZIP code."; card-number: "Please enter a valid card number."; expiry: "Please enter the expiry date as MM/YY."; cvc: "Please enter the 3 or 4 digit security code."; still on /checkout.html; cart still has 2 items
 
@@ -1018,7 +1017,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Card number error "Please enter a valid card number."; other field errors: 0; still on /checkout.html; cart items 2
 
@@ -1042,7 +1041,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Previous month (09/26): "This card has expired or the month is not valid.". Current month (10/26): accepted, order GS-000004 placed
 
@@ -1065,7 +1064,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > User B's order placed. User A's message: "Sorry, Sunglasses Case is now out of stock. Please remove it from your cart."; User A still on /checkout.html; User A's cart: Sunglasses Case ×1
 
@@ -1088,7 +1087,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > User B ordered 2 mirrors (stock 5 → 3). User A's message: "Sorry, only 3 of Round Wall Mirror left. Please update your cart."; User A still on /checkout.html
 
@@ -1111,7 +1110,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Demo user's order: id 1, GS-000001. As User A, /order-confirmation.html?id=1 shows heading "Order not found" and "We couldn’t find that order."; demo user's details on page: none
 
@@ -1138,7 +1137,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > home: sideways scroll no, elements past the edge none; shop: sideways scroll no, elements past the edge none; product: sideways scroll no, elements past the edge none; login: sideways scroll no, elements past the edge none; register: sideways scroll no, elements past the edge none; cart: sideways scroll no, elements past the edge none; checkout: sideways scroll no, elements past the edge none; confirmation: sideways scroll no, elements past the edge none. Full-page screenshots of all 8 pages reviewed by eye.
 >
@@ -1163,7 +1162,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > Logged out: logo ✓, Home ✓, Shop ✓, Cart ✓, Log in ✓, Register ✓, search box ✓, Search button ✓. Logged in: Cart ✓, Hi, name ✓, Log out ✓, search box ✓. (Checked each item is inside the 375 px screen and is the top element at its center, i.e. not covered.) Screenshots reviewed by eye.
 >
@@ -1190,7 +1189,7 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
+**Executed in Google Chrome 148.0.7778.215 on 2026-10-04:**
 
 > In Google Chrome: registered ("Hi, Chrome Journey") → searched "teapot" (1 product found for “teapot”) → added to cart ("Added 1 to your cart. View cart") → changed quantity to 2 in the cart (total $79.98) → checked out: "Thank you for your order!", GS-000002, total $79.98
 

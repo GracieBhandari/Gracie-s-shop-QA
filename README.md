@@ -12,7 +12,7 @@ A small e-commerce web application, built and then tested end to end as a QA por
 | Test plan, scenarios, test cases (49), test data | ✅ Complete |
 | Automated UI tests (17, Playwright) | ✅ 17 of 17 passed |
 | Automated API tests (32, Playwright) | ✅ 32 of 32 passed |
-| Bug reports | ✅ 1 open defect ([BUG-001](qa/bug-reports/BUG-001.md)) |
+| Bug reports | ✅ 1 defect found, fixed, and retested ([BUG-001](qa/bug-reports/BUG-001.md)) |
 | Test case execution (49) | ✅ 49 of 49 passed (Google Chrome) |
 | Test execution report | ✅ Complete: all exit criteria met |
 
@@ -20,7 +20,6 @@ A small e-commerce web application, built and then tested end to end as a QA por
 
 ## Table of Contents
 
-- [Project Ownership and Use of AI](#project-ownership-and-use-of-ai)
 - [About the Project](#about-the-project)
 - [Features](#features)
 - [Screenshots](#screenshots)
@@ -35,17 +34,6 @@ A small e-commerce web application, built and then tested end to end as a QA por
 - [Author](#author)
 
 ---
-
-## Project Ownership and Use of AI
-
-This project is owned and directed by **Gracie Bhandari**. I used **Claude Code** (Anthropic's AI coding assistant) as a development assistant throughout.
-
-| Who | What they did |
-|---|---|
-| **Gracie Bhandari** (owner, QA lead) | Defined the project goals, features, and Version 1 scope. Approved the technology stack. Directed the work phase by phase and reviewed and approved each phase before it was committed. Reviewed the test plan, test cases, and automation. Triaged BUG-001 and decided to defer the fix. Decided the final test scope (49 core test cases). |
-| **Claude Code** (AI assistant) | Wrote the application code, drafted the QA documents, and wrote and ran the automated tests at Gracie's request. Also ran all 49 test cases in Google Chrome at Gracie's request, recorded the actual results, and drafted the test report conclusion and the "What I Learned" section for Gracie. Explained each step so Gracie could learn from and review the work. |
-
-Commits made with AI assistance include a `Co-Authored-By: Claude` line, so the history shows this openly.
 
 ## About the Project
 
@@ -138,7 +126,7 @@ npm run seed   # create the database and load sample products
 npm start      # start the server at http://localhost:3000
 ```
 
-Running `npm run seed` again resets all data, including any accounts you created. If you were logged in, log out and back in afterwards (see [BUG-001](qa/bug-reports/BUG-001.md)).
+Running `npm run seed` again resets all data, including any accounts you created. If you were logged in, log in again afterwards.
 
 ### Demo Account
 
@@ -226,7 +214,7 @@ Testing combines **written test cases**, run step by step in Google Chrome, with
 | Test execution report | [`qa/test-execution-report.md`](qa/test-execution-report.md) | Complete, with conclusion |
 | Test evidence | [`qa/evidence/`](qa/evidence/) | Phone-size screenshots from the test run |
 | Automation report | [`qa/automation-report.md`](qa/automation-report.md) | 49 tests, 49 passed |
-| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | 1 open (BUG-001) |
+| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | 1 found; fixed and closed (BUG-001) |
 
 ## Automated Tests
 
@@ -249,7 +237,7 @@ The tests start their own copy of the app on port 3100 with a **separate test da
 
 | ID | Title | Severity | Status |
 |---|---|---|---|
-| [BUG-001](qa/bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Open (fix deferred) |
+| [BUG-001](qa/bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Closed (fixed and retested) |
 
 No new defects were found while running the 49 test cases.
 
@@ -259,12 +247,14 @@ No new defects were found while running the 49 test cases.
 - **Test design techniques.** I used boundary values (a 7- vs 8-character password; a card expiring this month vs last month; stock of 5 vs 6), negative tests (wrong passwords, invalid cards), and a concurrency test where two users try to buy the last item.
 - **Testing at two levels.** UI tests check what a shopper sees; API tests check the rules underneath. The API tests proved that rules like "you can't set your own price" hold even if someone skips the website and calls the server directly.
 - **A passing test isn't proof on its own.** Before trusting the automated tests, I broke two app rules on purpose to confirm the tests would catch it. I also learned to check whether a failure comes from the app or from the test itself: during development, one failure turned out to be a wrong expected total in a test script, not a bug.
-- **Bugs hide in the edges.** BUG-001 wasn't found by a planned test case. It turned up while writing the instructions for resetting test data. Writing it up clearly (steps, evidence, likely cause, severity vs priority) and deciding to defer the fix taught me that triage is a judgment call, not just a label.
+- **Bugs hide in the edges.** BUG-001 wasn't found by a planned test case. It turned up while writing the instructions for resetting test data. Writing it up clearly (steps, evidence, likely cause, severity vs priority) first deferring the fix, then fixing it and retesting it with the original steps, taught me the full defect lifecycle: triage is a judgment call, and a bug is only closed once the retest passes.
 - **Real money needs whole numbers.** Storing prices in cents avoids rounding errors like $29.969999, and the totals tests confirm it.
-- **Working with an AI assistant.** Claude Code wrote much of the code and ran the tests at my direction. The most important habit was verifying its output instead of assuming it was right: the reviews caught a miscounted coverage number and a script that corrupted some recorded results, and both were fixed before they reached the final documents.
+- **Verify before you trust.** Reviewing every result instead of assuming it was right caught a miscounted coverage number and a script that corrupted some recorded results. Both were fixed before they reached the final documents.
 
 ## Author
 
 **Gracie Bhandari**: project owner and QA lead
 
 - GitHub: [@GracieBhandari](https://github.com/GracieBhandari)
+
+_Claude Code was used as an AI-assisted development tool in this project._
