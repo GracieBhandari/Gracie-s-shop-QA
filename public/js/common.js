@@ -11,6 +11,32 @@ export async function getJSON(url) {
   return response.json();
 }
 
+// Sends JSON to our API. If the server returns an error, throws an Error
+// carrying the server's message, the status code, and any per-field errors.
+export async function postJSON(url, data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const body = response.status === 204 ? null : await response.json();
+  if (!response.ok) {
+    const error = new Error(body?.error || `Request failed: ${response.status}`);
+    error.status = response.status;
+    error.fields = body?.fields || {};
+    throw error;
+  }
+  return body;
+}
+
+// Where to go after logging in, from ?next=/some/page.
+// Only paths on this site are allowed, so a link can't send users to another website.
+export function safeNextUrl() {
+  const next = new URLSearchParams(window.location.search).get('next') || '/';
+  const isLocalPath = next.startsWith('/') && !next.startsWith('//') && !next.startsWith('/\\');
+  return isLocalPath ? next : '/';
+}
+
 // 1499 -> "$14.99"
 export function formatPrice(cents) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);

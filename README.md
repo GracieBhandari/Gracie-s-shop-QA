@@ -2,7 +2,7 @@
 
 A small e-commerce web application, built and then tested end to end as a QA portfolio project.
 
-> **Status:** 🚧 In development. The product catalog is built; cart, accounts, and checkout are next.
+> **Status:** 🚧 In development. The product catalog and accounts are built; cart and checkout are next.
 
 ---
 
@@ -42,7 +42,7 @@ Planned for Version 1:
 - [x] Product search
 - [x] Product details
 - [ ] Shopping cart (add, remove, change quantity, total calculation)
-- [ ] User registration and login
+- [x] User registration and login
 - [ ] Checkout
 - [ ] Order confirmation
 - [ ] Responsive design (mobile, tablet, desktop)
@@ -96,6 +96,14 @@ npm run seed   # create the database and load sample products
 npm start      # start the server at http://localhost:3000
 ```
 
+Running `npm run seed` again resets all data, including any accounts you created.
+
+### Demo Account
+
+| Email | Password |
+|---|---|
+| `shopper@example.com` | `Password123` |
+
 ### API Endpoints
 
 | Method | Endpoint | Description |
@@ -106,6 +114,10 @@ npm start      # start the server at http://localhost:3000
 | GET | `/api/products?category=kitchen` | Filter products by category slug |
 | GET | `/api/products?search=mug` | Search product names and descriptions |
 | GET | `/api/products/:id` | Get one product by id |
+| POST | `/api/auth/register` | Create an account (`name`, `email`, `password`) and log in |
+| POST | `/api/auth/login` | Log in (`email`, `password`) |
+| POST | `/api/auth/logout` | Log out |
+| GET | `/api/auth/me` | Get the logged-in user, or `{ "user": null }` |
 
 ## QA Approach
 

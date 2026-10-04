@@ -17,3 +17,12 @@ CREATE TABLE IF NOT EXISTS products (
   price_cents INTEGER NOT NULL CHECK (price_cents > 0),
   stock       INTEGER NOT NULL CHECK (stock >= 0)
 );
+
+-- Passwords are never stored. Only a bcrypt hash of the password is saved.
+CREATE TABLE IF NOT EXISTS users (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  name          TEXT NOT NULL,
+  email         TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  created_at    TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

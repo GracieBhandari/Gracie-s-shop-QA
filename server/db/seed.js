@@ -4,7 +4,11 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const bcrypt = require('bcryptjs');
 const db = require('./database');
+
+// A ready-made account for testers and automated tests
+const demoUser = { name: 'Test Shopper', email: 'shopper@example.com', password: 'Password123' };
 
 const categories = [
   { name: 'Home Decor', slug: 'home-decor', emoji: '🪴' },
@@ -46,6 +50,7 @@ const products = [
 db.exec('BEGIN');
 try {
   // Drop and recreate the tables so schema changes are picked up too
+  db.exec('DROP TABLE IF EXISTS users');
   db.exec('DROP TABLE IF EXISTS products');
   db.exec('DROP TABLE IF EXISTS categories');
   db.exec(fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8'));
@@ -66,8 +71,12 @@ try {
     );
   }
 
+  db.prepare('INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)').run(
+    demoUser.name, demoUser.email, bcrypt.hashSync(demoUser.password, 10)
+  );
+
   db.exec('COMMIT');
-  console.log(`Seeded ${categories.length} categories and ${products.length} products.`);
+  console.log(`Seeded ${categories.length} categories, ${products.length} products, and 1 demo user (${demoUser.email}).`);
 } catch (error) {
   db.exec('ROLLBACK');
   throw error;

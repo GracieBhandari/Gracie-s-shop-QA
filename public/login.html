@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop · Gracie's Shop</title>
+  <title>Log in · Gracie's Shop</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
   <link rel="stylesheet" href="/css/styles.css">
   <script type="module" src="/js/header.js"></script>
-  <script type="module" src="/js/products.js"></script>
+  <script type="module" src="/js/login.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -15,7 +15,7 @@
       <a class="logo" href="/">Gracie's Shop</a>
       <nav class="main-nav" aria-label="Main">
         <a href="/">Home</a>
-        <a href="/products.html" aria-current="page">Shop</a>
+        <a href="/products.html">Shop</a>
       </nav>
       <form class="search-form" action="/products.html" role="search">
         <input type="search" name="search" placeholder="Search products" aria-label="Search products" data-testid="search-input">
@@ -26,11 +26,25 @@
   </header>
 
   <main class="container">
-    <h1 class="page-title" id="page-title">All products</h1>
-    <nav class="category-filter" id="category-filter" aria-label="Filter by category" data-testid="category-filter"></nav>
-    <p class="results-summary" id="results-summary" data-testid="results-summary" aria-live="polite"></p>
-    <div class="product-grid" id="product-list" data-testid="product-list">
-      <p class="message">Loading products…</p>
+    <div class="auth-card">
+      <h1>Log in</h1>
+      <p class="auth-subtitle">Welcome back! Log in to your account.</p>
+
+      <p class="form-error" id="form-error" role="alert" data-testid="form-error" hidden></p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" data-testid="email-input">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" data-testid="password-input">
+        </div>
+        <button class="button button-full" type="submit" data-testid="login-button">Log in</button>
+      </form>
+
+      <p class="auth-switch">New to Gracie's Shop? <a id="switch-link" href="/register.html" data-testid="register-instead">Create an account</a></p>
     </div>
   </main>
 

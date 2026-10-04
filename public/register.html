@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account · Gracie's Shop</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/header.js"></script>
+  <script type="module" src="/js/register.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Gracie's Shop</a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/products.html">Shop</a>
+      </nav>
+      <form class="search-form" action="/products.html" role="search">
+        <input type="search" name="search" placeholder="Search products" aria-label="Search products" data-testid="search-input">
+        <button class="button" type="submit" data-testid="search-button">Search</button>
+      </form>
+      <div class="account-nav" id="account-nav" data-testid="account-nav"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-card">
+      <h1>Create an account</h1>
+      <p class="auth-subtitle">Join Gracie's Shop to save your cart and check out.</p>
+
+      <p class="form-error" id="form-error" role="alert" data-testid="form-error" hidden></p>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" data-testid="name-input">
+          <p class="field-error" id="name-error" data-testid="name-error"></p>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" data-testid="email-input">
+          <p class="field-error" id="email-error" data-testid="email-error"></p>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="password-hint password-error" data-testid="password-input">
+          <p class="field-hint" id="password-hint">At least 8 characters, with a letter and a number.</p>
+          <p class="field-error" id="password-error" data-testid="password-error"></p>
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" aria-describedby="confirmPassword-error" data-testid="confirm-password-input">
+          <p class="field-error" id="confirmPassword-error" data-testid="confirm-password-error"></p>
+        </div>
+        <button class="button button-full" type="submit" data-testid="register-button">Create account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a id="switch-link" href="/login.html" data-testid="login-instead">Log in</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Gracie's Shop · A QA portfolio project</div>
+  </footer>
+</body>
+</html>

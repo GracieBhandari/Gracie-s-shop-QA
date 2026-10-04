@@ -112,6 +112,30 @@ input:focus-visible {
   border-radius: 0 8px 8px 0;
 }
 
+.account-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.account-link {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.account-link:hover {
+  color: var(--pink);
+}
+
+.greeting {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
 /* ---------- Buttons ---------- */
 
 .button {
@@ -129,6 +153,27 @@ input:focus-visible {
 
 .button:hover {
   background: var(--pink-dark);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-outline {
+  background: var(--white);
+  color: var(--pink);
+  border: 1px solid var(--pink);
+}
+
+.button-outline:hover {
+  background: var(--pink-soft);
+}
+
+.button-full {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
 }
 
 .button-large {
@@ -339,6 +384,80 @@ input:focus-visible {
   color: var(--danger);
 }
 
+/* ---------- Login and register forms ---------- */
+
+.auth-card {
+  max-width: 420px;
+  margin: 48px auto;
+  padding: 32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-card h1 {
+  margin: 0 0 4px;
+}
+
+.auth-subtitle {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9ccd2;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.field-hint {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.field-error {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.form-error {
+  margin: 0 0 20px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fff5f5;
+  border: 1px solid #ffc9c9;
+  color: var(--danger);
+}
+
+.auth-switch {
+  margin: 20px 0 0;
+  text-align: center;
+  color: var(--muted);
+}
+
 /* ---------- Messages (loading, empty, error) ---------- */
 
 .message {
@@ -375,9 +494,24 @@ input:focus-visible {
 /* ---------- Small screens ---------- */
 
 @media (max-width: 700px) {
+  .header-inner {
+    gap: 12px 16px;
+  }
+
+  /* Account links stay on the top row; search moves to its own row below */
+  .account-nav {
+    margin-left: auto;
+  }
+
   .search-form {
+    order: 1;
     flex-basis: 100%;
     margin-left: 0;
+  }
+
+  .auth-card {
+    margin: 24px auto;
+    padding: 24px 20px;
   }
 
   .hero {
