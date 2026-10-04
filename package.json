@@ -1,0 +1,15 @@
+{
+  "name": "gracies-shop",
+  "version": "0.1.0",
+  "description": "A small e-commerce web application built and tested as a QA portfolio project.",
+  "private": true,
+  "author": "Gracie Bhandari",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GracieBhandari/Gracie-s-shop-QA.git"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {}
+}
