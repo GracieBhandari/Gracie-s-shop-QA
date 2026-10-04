@@ -91,7 +91,21 @@ npm install
 
 ### Running the App
 
-_Coming soon._
+```bash
+npm run seed   # create the database and load sample products
+npm start      # start the server at http://localhost:3000
+```
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/health` | Check that the server is running |
+| GET | `/api/categories` | List all categories |
+| GET | `/api/products` | List all products |
+| GET | `/api/products?category=kitchen` | Filter products by category slug |
+| GET | `/api/products?search=mug` | Search product names and descriptions |
+| GET | `/api/products/:id` | Get one product by id |
 
 ## QA Approach
 
