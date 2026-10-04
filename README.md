@@ -9,12 +9,12 @@ A small e-commerce web application, built and then tested end to end as a QA por
 | Area | Status |
 |---|---|
 | Application (all Version 1 features) | ✅ Complete |
-| Test plan, scenarios, test cases (123), test data | ✅ Complete |
+| Test plan, scenarios, test cases (49), test data | ✅ Complete |
 | Automated UI tests (17, Playwright) | ✅ 17 of 17 passed |
 | Automated API tests (32, Playwright) | ✅ 32 of 32 passed |
 | Bug reports | ✅ 1 open defect ([BUG-001](qa/bug-reports/BUG-001.md)) |
-| Manual test execution | ⏳ **In progress.** Not yet started. All 123 cases are "Not run". |
-| Test execution report | ⏳ In progress. Automated results recorded; manual results pending. |
+| Test case execution (49) | ✅ 49 of 49 passed (Google Chrome) |
+| Test execution report | ✅ Complete: all exit criteria met |
 
 ---
 
@@ -42,8 +42,8 @@ This project is owned and directed by **Gracie Bhandari**. I used **Claude Code*
 
 | Who | What they did |
 |---|---|
-| **Gracie Bhandari** (owner, QA lead) | Defined the project goals, features, and Version 1 scope. Approved the technology stack. Directed the work phase by phase and reviewed and approved each phase before it was committed. Reviewed the test plan, test cases, and automation. Triaged BUG-001 and decided to defer the fix. **Performs the manual test execution.** |
-| **Claude Code** (AI assistant) | Wrote the application code, drafted the QA documents, and wrote and ran the automated tests at Gracie's request. Explained each step so Gracie could learn from and review the work. |
+| **Gracie Bhandari** (owner, QA lead) | Defined the project goals, features, and Version 1 scope. Approved the technology stack. Directed the work phase by phase and reviewed and approved each phase before it was committed. Reviewed the test plan, test cases, and automation. Triaged BUG-001 and decided to defer the fix. Decided the final test scope (49 core test cases). |
+| **Claude Code** (AI assistant) | Wrote the application code, drafted the QA documents, and wrote and ran the automated tests at Gracie's request. Also ran all 49 test cases in Google Chrome at Gracie's request, recorded the actual results, and drafted the test report conclusion and the "What I Learned" section for Gracie. Explained each step so Gracie could learn from and review the work. |
 
 Commits made with AI assistance include a `Co-Authored-By: Claude` line, so the history shows this openly.
 
@@ -104,7 +104,7 @@ Captured from the running application.
 ├── qa/                     # QA documentation
 │   ├── test-plan.md
 │   ├── test-scenarios.md
-│   ├── test-cases/         # 123 test cases, grouped by priority
+│   ├── test-cases/         # 49 test cases
 │   ├── test-data/
 │   ├── manual-test-execution.md
 │   ├── test-execution-report.md
@@ -198,21 +198,21 @@ DB_PATH=/tmp/test-shop.db npm start
 
 ## QA Approach
 
-Testing combines **manual testing** from written test cases with **automated UI and API tests**. The [test plan](qa/test-plan.md) covers scope, approach, environment, entry and exit criteria, and how defects are rated.
+Testing combines **written test cases**, run step by step in Google Chrome, with **automated UI and API tests**. The [test plan](qa/test-plan.md) covers scope, approach, environment, entry and exit criteria, and how defects are rated.
 
-- **Test types:** functional, negative, boundary value, UI and responsive, cross-browser (Chrome, Firefox, Safari), API, and basic security checks (input handling, access to other users' data)
-- **Test design:** 25 test scenarios broken down into 123 test cases, each with preconditions, steps, test data, an expected result, and a priority
+- **Test types:** functional, negative, boundary value, concurrency (two users buying the last item), phone-size layout, API, and basic security checks (access to other users' data, hiding which emails are registered)
+- **Test design:** 17 test scenarios broken down into 49 focused test cases covering the core shopping journey, each with preconditions, steps, test data, an expected result, and the actual result
 - **Test data:** a reproducible starting state (`npm run seed`) plus documented valid, invalid, and boundary values
 - **Traceability:** automated UI tests are named after the manual test case they cover (e.g. `TC-CART-013`)
 
-| Area | Test cases | High | Medium | Low |
-|---|---|---|---|---|
-| [Catalog](qa/test-cases/01-catalog.md) | 23 | 9 | 9 | 5 |
-| [Accounts](qa/test-cases/02-accounts.md) | 27 | 11 | 11 | 5 |
-| [Cart](qa/test-cases/03-cart.md) | 26 | 14 | 10 | 2 |
-| [Checkout](qa/test-cases/04-checkout.md) | 30 | 12 | 14 | 4 |
-| [UI](qa/test-cases/05-ui.md) | 17 | 3 | 10 | 4 |
-| **Total** | **123** | **49** | **54** | **20** |
+| Area | Test cases | Passed | Failed |
+|---|---|---|---|
+| [Catalog](qa/test-cases/01-catalog.md) | 9 | 9 | 0 |
+| [Accounts](qa/test-cases/02-accounts.md) | 11 | 11 | 0 |
+| [Cart](qa/test-cases/03-cart.md) | 14 | 14 | 0 |
+| [Checkout](qa/test-cases/04-checkout.md) | 12 | 12 | 0 |
+| [UI](qa/test-cases/05-ui.md) | 3 | 3 | 0 |
+| **Total** | **49** | **49** | **0** |
 
 ## Test Documentation
 
@@ -220,10 +220,11 @@ Testing combines **manual testing** from written test cases with **automated UI 
 |---|---|---|
 | Test plan | [`qa/test-plan.md`](qa/test-plan.md) | Complete |
 | Test scenarios | [`qa/test-scenarios.md`](qa/test-scenarios.md) | Complete |
-| Test cases | [`qa/test-cases/`](qa/test-cases/) | Complete; manual execution not yet started |
+| Test cases | [`qa/test-cases/`](qa/test-cases/) | Complete: 49 passed, 0 failed |
 | Test data | [`qa/test-data/test-data.md`](qa/test-data/test-data.md) | Complete |
-| Manual test execution (High priority checklist) | [`qa/manual-test-execution.md`](qa/manual-test-execution.md) | Ready; not yet executed |
-| Test execution report | [`qa/test-execution-report.md`](qa/test-execution-report.md) | Automated results recorded; manual results pending |
+| Test execution checklist | [`qa/manual-test-execution.md`](qa/manual-test-execution.md) | Complete: 49 passed, 0 failed |
+| Test execution report | [`qa/test-execution-report.md`](qa/test-execution-report.md) | Complete, with conclusion |
+| Test evidence | [`qa/evidence/`](qa/evidence/) | Phone-size screenshots from the test run |
 | Automation report | [`qa/automation-report.md`](qa/automation-report.md) | 49 tests, 49 passed |
 | Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | 1 open (BUG-001) |
 
@@ -250,15 +251,20 @@ The tests start their own copy of the app on port 3100 with a **separate test da
 |---|---|---|---|
 | [BUG-001](qa/bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Open (fix deferred) |
 
-Defects found during manual testing will be added here.
+No new defects were found while running the 49 test cases.
 
 ## What I Learned
 
-_Gracie will write this section after completing manual testing._
+- **Plan before testing.** Writing the test plan, scenarios, and test cases before running anything showed me what "done" means. The exit criteria made it clear when testing was actually complete.
+- **Test design techniques.** I used boundary values (a 7- vs 8-character password; a card expiring this month vs last month; stock of 5 vs 6), negative tests (wrong passwords, invalid cards), and a concurrency test where two users try to buy the last item.
+- **Testing at two levels.** UI tests check what a shopper sees; API tests check the rules underneath. The API tests proved that rules like "you can't set your own price" hold even if someone skips the website and calls the server directly.
+- **A passing test isn't proof on its own.** Before trusting the automated tests, I broke two app rules on purpose to confirm the tests would catch it. I also learned to check whether a failure comes from the app or from the test itself: during development, one failure turned out to be a wrong expected total in a test script, not a bug.
+- **Bugs hide in the edges.** BUG-001 wasn't found by a planned test case. It turned up while writing the instructions for resetting test data. Writing it up clearly (steps, evidence, likely cause, severity vs priority) and deciding to defer the fix taught me that triage is a judgment call, not just a label.
+- **Real money needs whole numbers.** Storing prices in cents avoids rounding errors like $29.969999, and the totals tests confirm it.
+- **Working with an AI assistant.** Claude Code wrote much of the code and ran the tests at my direction. The most important habit was verifying its output instead of assuming it was right: the reviews caught a miscounted coverage number and a script that corrupted some recorded results, and both were fixed before they reached the final documents.
 
 ## Author
 
 **Gracie Bhandari**: project owner and QA lead
 
 - GitHub: [@GracieBhandari](https://github.com/GracieBhandari)
-- LinkedIn: _add link_

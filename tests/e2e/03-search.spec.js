@@ -27,7 +27,7 @@ test('TC-CAT-012: search with no results shows a helpful message', async ({ page
   );
 });
 
-test('TC-CAT-014: "%" is searched as plain text, not as a wildcard', async ({ page }) => {
+test('Search: "%" is searched as plain text, not as a wildcard', async ({ page }) => {
   await page.goto('/');
   await page.getByTestId('search-input').fill('%');
   await page.getByTestId('search-button').click();

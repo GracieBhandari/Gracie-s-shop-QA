@@ -1,6 +1,6 @@
-# Manual Test Execution: High Priority
+# Manual Test Execution
 
-This is the checklist for running the **49 High priority** test cases by hand. Medium and Low priority cases are run from the tables in [test-cases/](test-cases/) in the same way.
+This is the checklist for the **49 test cases** in the Version 1 test suite.
 
 **How to use this checklist**
 
@@ -21,23 +21,24 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 | Field | Value |
 |---|---|
-| Tester | Gracie Bhandari |
-| Date | |
-| Browser and version | |
-| Operating system | macOS |
-| Screen size | |
-| App version (commit) | |
+| Tester | Claude Code (AI assistant), at Gracie Bhandari's request |
+| Date | 2026-10-04 |
+| Browser and version | Google Chrome 148.0.7778.215 |
+| Operating system | macOS 26.6.1 |
+| Screen size | 1280 × 800 (desktop); 375 × 812 for TC-UI-001 and TC-UI-003 |
+| App version (commit) | `dcf2528` |
+| How the tests were run | Each test case's written steps were performed in Google Chrome by a script that drives the browser, clicking and typing as a user would. Preconditions such as "cart has 3 × product 6" were set up through the API. Results come from what the pages actually showed. The phone-size screenshots were also reviewed by eye. A separate database was used and reset (`npm run seed`) wherever a test case requires fresh data. |
 
 ## Results Summary
 
-| Area | High priority cases | Pass | Fail | Blocked | Not run |
+| Area | Test cases | Pass | Fail | Blocked | Not run |
 |---|---|---|---|---|---|
-| Catalog | 9 | | | | 9 |
-| Accounts | 11 | | | | 11 |
-| Cart | 14 | | | | 14 |
-| Checkout | 12 | | | | 12 |
-| UI and Browsers | 3 | | | | 3 |
-| **Total** | **49** | | | | **49** |
+| Catalog | 9 | 9 | 0 | 0 | 0 |
+| Accounts | 11 | 11 | 0 | 0 | 0 |
+| Cart | 14 | 14 | 0 | 0 | 0 |
+| Checkout | 12 | 12 | 0 | 0 | 0 |
+| UI and Browsers | 3 | 3 | 0 | 0 | 0 |
+| **Total** | **49** | **49** | **0** | **0** | **0** |
 
 ---
 
@@ -59,9 +60,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Header: logo "Gracie's Shop", nav "Home Shop", search box visible: true, account area "Cart Log in Register" Banner "Little things that make home feel lovely" with button "Shop all products"; 4 category cards; 4 featured products; footer visible: true
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-003: "Shop all products" opens the full catalog
 
@@ -79,9 +82,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Title "All products", selected chip "All", summary "20 products", 20 product cards
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-005: Category card filters products
 
@@ -97,11 +102,16 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 - Shop page opens with the title "Kitchen", the Kitchen chip highlighted, "5 products", and only Kitchen products listed
 
+
+
+> URL /products.html?category=kitchen; title "Kitchen", highlighted chip "Kitchen", summary "5 products", 5 cards, categories: KITCHEN
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> URL /products.html?category=kitchen; title "Kitchen", highlighted chip "Kitchen", summary "5 products", 5 cards, categories: KITCHEN
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-006: Category chips switch the filter
 
@@ -121,9 +131,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> After Stationery: title "Stationery", 5 products (all STATIONERY). After All: title "All products", 20 products
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-007: Search by exact product name
 
@@ -142,9 +154,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Summary "1 product found for “Dotted Notebook”"; cards: Dotted Notebook; search box contains "Dotted Notebook"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-008: Search ignores upper and lower case
 
@@ -162,9 +176,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Summary "1 product found for “MUG”"; cards: Stoneware Coffee Mug
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-012: Search with no results
 
@@ -182,9 +198,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Summary "0 products found for “xyz123”"; 0 cards; message "No products match your search. Try a different word or browse all products."
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-018: Product card opens product details
 
@@ -203,9 +221,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Breadcrumb "Home / Kitchen / Stoneware Coffee Mug"; category "KITCHEN"; name "Stoneware Coffee Mug"; price "$14.99"; description "Speckled stoneware mug that holds 350 ml. Dishwasher safe."; stock "In stock"; tab title "Stoneware Coffee Mug · Gracie's Shop"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CAT-019: Stock labels
 
@@ -231,9 +251,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> product 4: "Only 5 left" (orange); product 5: "Out of stock" (red); product 6: "In stock" (green); product 10: "In stock" (green); product 20: "Only 1 left" (orange)
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ---
 
@@ -257,9 +279,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Taken to /; header shows "Cart Hi, QA User A Log out"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-002: Register with every field empty
 
@@ -278,9 +302,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Top message "Please fix the highlighted fields."; name "Please enter your name."; email "Please enter a valid email address."; password "Password must be at least 8 characters."; borders name:true:rgb(201, 42, 42), email:true:rgb(201, 42, 42), password:true:rgb(201, 42, 42); still on /register.html
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-004: Password length boundary (7 and 8 characters)
 
@@ -300,9 +326,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> 7 characters ("Pass123"): "Password must be at least 8 characters.". 8 characters ("Pass1234"): account created, header "Hi, Boundary Eight"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-007: Passwords do not match
 
@@ -322,9 +350,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Confirm password error "Passwords do not match."; top "Please fix the highlighted fields."; logged in afterwards: false
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-008: Email already registered
 
@@ -342,9 +372,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Top "An account with this email already exists."; under email "An account with this email already exists."
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-015: Log in with valid details
 
@@ -364,9 +396,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Clicked Log in from the home page (/login.html?next=%2F); after login: page /, header "Cart Hi, Test Shopper Log out"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-016: Wrong password
 
@@ -384,9 +418,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Message "Incorrect email or password."; logged in afterwards: false
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-017: Email that is not registered
 
@@ -404,9 +440,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Message "Incorrect email or password." (identical to TC-ACC-016); logged in afterwards: false
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-022: Login stays active across pages and reload
 
@@ -425,9 +463,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> /: Hi, Test Shopper; /products.html: Hi, Test Shopper; /product.html?id=6: Hi, Test Shopper; /cart.html: Hi, Test Shopper; after reload: Hi, Test Shopper
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-023: Log out
 
@@ -445,9 +485,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> After Log out: page "/", header "Cart Log in Register". /cart.html shows "Please log in to see your cart."
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-ACC-027: New account can log in later
 
@@ -466,9 +508,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Logged out, then logged in as qa.usera@example.com: header greeting "Hi, QA User A"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ---
 
@@ -491,9 +535,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Message "Added 1 to your cart. View cart" (color green); header badge 1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-002: Add several of an item
 
@@ -513,9 +559,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Quantity before adding 3; message "Added 3 to your cart. View cart"; badge 3; picker after adding 1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-003: Visitor clicks "Add to cart"
 
@@ -535,9 +583,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Clicking Add to cart as a visitor opened /login.html?next=/product.html?id=6. After login: back on /product.html?id=6, "Hi, Test Shopper". Add to cart then showed "Added 1 to your cart. View cart"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-007: Out-of-stock product cannot be added
 
@@ -555,9 +605,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Button "Out of stock", disabled: true; quantity pickers shown: 0
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-008: Adding the same product again combines the quantities
 
@@ -577,9 +629,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Added 2, then 1 more. Cart has 1 line(s) for Stoneware Coffee Mug, quantity 3
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-012: Cart shows item details
 
@@ -597,9 +651,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Line: picture "☕", "Stoneware Coffee Mug", "$14.99 each", quantity 3, line total $44.97, Remove visible: true. Summary: Items 3, Total $44.97
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-013: Total for several products
 
@@ -617,9 +673,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Line totals $44.97, $25.98, $7.99; Items 6; Total $78.94; header badge 6
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-015: Increase quantity in the cart
 
@@ -637,9 +695,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Quantity 4, line total $59.96, Total $59.96, badge 4
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-016: Decrease quantity in the cart
 
@@ -657,9 +717,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Quantity 1, Total $14.99, − disabled: true
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-018: Remove an item
 
@@ -677,9 +739,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Remaining lines: Dotted Notebook; Items 1; Total $12.99; badge 1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-019: Remove the last item
 
@@ -697,9 +761,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Message "Your cart is empty."; button "Start shopping"; badge (hidden)
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-024: Cart is kept after reload
 
@@ -717,9 +783,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Before reload: Stoneware Coffee Mug ×2, Gel Pen Set ×1. After reload: Stoneware Coffee Mug ×2, Gel Pen Set ×1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-025: Cart is kept after logging out and in
 
@@ -739,9 +807,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Before logging out: Stoneware Coffee Mug ×2, Gel Pen Set ×1. After logging back in: Stoneware Coffee Mug ×2, Gel Pen Set ×1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CART-026: Each user has their own cart
 
@@ -761,9 +831,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Demo user's cart had Stoneware Coffee Mug × 1. Logged in as User A: 0 cart lines, message "Your cart is empty."
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ---
 
@@ -786,9 +858,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Checkout page sections: Shipping address, Payment; test-card note visible: true; summary: ☕ Stoneware Coffee Mug × 2 $29.98; Total $29.98
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-005: Place an order with valid details
 
@@ -808,9 +882,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Confirmation: "Thank you for your order!", order GS-000001, "Placed on October 4, 2026 at 1:46 PM", items: ☕ Stoneware Coffee Mug × 2 $29.98, total paid $29.98, shipping "Test Shopper 1 Main St Springfield, 12345", payment "Card ending in 4242"
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-006: Cart is emptied after an order
 
@@ -829,9 +905,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Header badge hidden: true; Cart page shows "Your cart is empty."
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-007: Stock goes down after an order
 
@@ -850,9 +928,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Before the order: "Only 5 left". After ordering 2: "Only 3 left"; quantity picker stops at 3
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-008: Order with several products
 
@@ -870,9 +950,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Confirmation items: 🧶 Woven Throw Blanket × 1 $49.99 | 🖊️ Gel Pen Set × 2 $19.98; total paid $69.97
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-009: Full card number is never shown
 
@@ -890,9 +972,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Payment line "Card ending in 4242"; full card number on page (text or HTML): false; security code shown: false
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-013: Submit an empty form
 
@@ -911,9 +995,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Top "Please fix the highlighted fields."; full-name: "Please enter your full name."; address: "Please enter your street address."; city: "Please enter your city."; zip: "Please enter a 5-digit ZIP code."; card-number: "Please enter a valid card number."; expiry: "Please enter the expiry date as MM/YY."; cvc: "Please enter the 3 or 4 digit security code."; still on /checkout.html; cart still has 2 items
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-016: Card number that fails the Luhn check
 
@@ -932,9 +1018,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Card number error "Please enter a valid card number."; other field errors: 0; still on /checkout.html; cart items 2
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-021: Expired card (boundary)
 
@@ -954,9 +1042,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Previous month (09/26): "This card has expired or the month is not valid.". Current month (10/26): accepted, order GS-000004 placed
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-024: Product sold out after it was added to the cart
 
@@ -975,9 +1065,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> User B's order placed. User A's message: "Sorry, Sunglasses Case is now out of stock. Please remove it from your cart."; User A still on /checkout.html; User A's cart: Sunglasses Case ×1
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-025: Stock dropped below the quantity in the cart
 
@@ -996,9 +1088,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> User B ordered 2 mirrors (stock 5 → 3). User A's message: "Sorry, only 3 of Round Wall Mirror left. Please update your cart."; User A still on /checkout.html
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-CHK-027: Another user's order cannot be viewed
 
@@ -1017,9 +1111,11 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Demo user's order: id 1, GS-000001. As User A, /order-confirmation.html?id=1 shows heading "Order not found" and "We couldn’t find that order."; demo user's details on page: none
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ---
 
@@ -1042,9 +1138,13 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> home: sideways scroll no, elements past the edge none; shop: sideways scroll no, elements past the edge none; product: sideways scroll no, elements past the edge none; login: sideways scroll no, elements past the edge none; register: sideways scroll no, elements past the edge none; cart: sideways scroll no, elements past the edge none; checkout: sideways scroll no, elements past the edge none; confirmation: sideways scroll no, elements past the edge none. Full-page screenshots of all 8 pages reviewed by eye.
+>
+> Evidence: [phone screenshots](evidence/2026-10-04-high-priority-run/).
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-UI-003: Header on a phone
 
@@ -1063,9 +1163,13 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> Logged out: logo ✓, Home ✓, Shop ✓, Cart ✓, Log in ✓, Register ✓, search box ✓, Search button ✓. Logged in: Cart ✓, Hi, name ✓, Log out ✓, search box ✓. (Checked each item is inside the 375 px screen and is the top element at its center, i.e. not covered.) Screenshots reviewed by eye.
+>
+> Observation (not a failure of this test case): on a phone the header takes three rows (logo and menu, then account links, then search). Everything fits and works; it is a possible layout polish item.
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —
 
 ### TC-UI-009: Full purchase in Chrome
 
@@ -1086,6 +1190,8 @@ Test data: [test-data/test-data.md](test-data/test-data.md)
 
 **Actual result:**
 
-> _Write what happened here._
+**Run by Claude Code, scripted session in Google Chrome 148.0.7778.215, 2026-10-04:**
 
-**Status:** ☐ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):**
+> In Google Chrome: registered ("Hi, Chrome Journey") → searched "teapot" (1 product found for “teapot”) → added to cart ("Added 1 to your cart. View cart") → changed quantity to 2 in the cart (total $79.98) → checked out: "Thank you for your order!", GS-000002, total $79.98
+
+**Status:** ☑ Pass ☐ Fail ☐ Blocked  **Bug ID (if failed):** —

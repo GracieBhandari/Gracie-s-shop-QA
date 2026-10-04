@@ -25,7 +25,7 @@ The automated tests were written with Claude Code (AI assistant) at the directio
 | Failed | 0 | 0 | **0** |
 | Errors | 0 | 0 | **0** |
 
-UI tests cover 23 of the 123 manual test cases (21 High, 2 Medium; see below). API tests check the same rules directly at the API, the layer below the web pages.
+UI tests cover 21 of the 49 test cases in the test suite (see below), plus two extra checks. API tests check the same rules directly at the API, the layer below the web pages.
 
 **Stability:**
 - UI tests alone: 3 runs in a row, 17 of 17 passed each time (5.5 s, 5.3 s, 4.9 s).
@@ -33,7 +33,7 @@ UI tests cover 23 of the 123 manual test cases (21 High, 2 Medium; see below). A
 - No flaky tests were seen.
 
 **Can the tests fail? (false-positive checks):**
-1. The 10-per-product limit in `server/config.js` was temporarily changed to 11. **TC-CART-010 failed as it should** (expected the "maximum quantity (10)" message, received "Added 1 to your cart. View cart").
+1. The 10-per-product limit in `server/config.js` was temporarily changed to 11. **the test "Cart: cannot add more than 10 of one product" failed as it should** (expected the "maximum quantity (10)" message, received "Added 1 to your cart. View cart").
 2. The lower-casing of the email at login in `server/routes/auth.js` was temporarily removed. **API-15 failed as it should** (expected `200`, received `401`).
 
 Both changes were undone with `git checkout`, and `git diff` confirmed the files matched the committed version exactly. The suite then passed 49 of 49 again. This shows the tests check real behavior and don't pass no matter what.
@@ -56,11 +56,11 @@ Both changes were undone with `git checkout`, and `git diff` confirmed the files
 | 5 | TC-CAT-019: product pages show the correct stock label | **Flow 2: catalog.** Stock labels at each boundary. | Open products 6, 4, 20, 5 | "In stock", "Only 5 left", "Only 1 left", "Out of stock" | All checks met | Pass | Covers the low-stock boundary (5) and zero stock |
 | 6 | TC-CAT-008: search ignores upper and lower case | **Flow 3: search.** | Type `MUG` in the header search, click Search | URL has `search=MUG`; "1 product found for “MUG”"; only Stoneware Coffee Mug; search box keeps "MUG" | All checks met | Pass | |
 | 7 | TC-CAT-012: search with no results shows a helpful message | **Flow 3: search.** Empty results. | Search for `xyz123` | "0 products found for “xyz123”", no cards, the "No products match…" message | All checks met | Pass | |
-| 8 | TC-CAT-014: "%" is searched as plain text, not as a wildcard | **Flow 3: search.** Special characters. | Search for `%` | "0 products found for “%”", no cards (not all 20) | All checks met | Pass | |
+| 8 | Search: "%" is searched as plain text, not as a wildcard | **Flow 3: search.** Special characters. | Search for `%` | "0 products found for “%”", no cards (not all 20) | All checks met | Pass | |
 | 9 | TC-CART-003: visitor is sent to log in, then returned to the product to add it | **Flow 4: add to cart.** The login gate on the cart. | As a visitor open product 6, click Add to cart, log in as the demo user, click Add to cart | Redirect to `login.html?next=…`; after login back on product 6 with "Hi, Test Shopper"; "Added 1 to your cart."; header badge 1 | All checks met | Pass | Uses the seeded demo account |
 | 10 | TC-CART-002: add several of a product using the quantity picker | **Flow 4: add to cart.** | New user; product 6; − disabled; click + twice; Add to cart | Quantity 3; "Added 3 to your cart."; badge 3; picker resets to 1 | All checks met | Pass | |
 | 11 | TC-CART-007: out-of-stock product cannot be added | **Flow 4: add to cart.** | New user; open product 5 | Button reads "Out of stock" and is disabled; no quantity picker | All checks met | Pass | |
-| 12 | TC-CART-010: cannot add more than 10 of one product | **Flow 5: quantity rules.** | New user; 10 × product 6 in the cart (API); click Add to cart | Message "You already have the maximum quantity (10) of this item in your cart."; cart still has 10 (checked through the API) | All checks met | Pass | This is the test used in the false-positive check above |
+| 12 | Cart: cannot add more than 10 of one product | **Flow 5: quantity rules.** | New user; 10 × product 6 in the cart (API); click Add to cart | Message "You already have the maximum quantity (10) of this item in your cart."; cart still has 10 (checked through the API) | All checks met | Pass | This is the test used in the false-positive check above |
 | 13 | TC-CART-013: cart shows correct line totals and grand total | **Flow 5: cart totals.** | New user; Mug × 3, Notebook × 2, Washi × 1 (API); open Cart | Line totals $44.97, $25.98, $7.99; Items 6; Total $78.94; badge 6 | All checks met | Pass | |
 | 14 | TC-CART-015/016/018/019: change quantity and remove items in the cart | **Flow 5: cart quantity behavior.** | New user; Mug × 3 + Notebook × 1; click + on Mug, then −, then Remove on Mug, then Remove on Notebook | 4 → $59.96 / total $72.95 / badge 5; 3 → total $57.96; after removing Mug: 1 line, $12.99, badge 1; after the last removal: "Your cart is empty.", badge hidden | All checks met | Pass | |
 | 15 | TC-CHK-013: submitting an empty checkout form shows every field error | **Flow 6: checkout validation.** | New user; Mug × 1; open Checkout; click Place order | Top message plus all 7 field messages (exact text); still on the checkout page; cart still has 1 item | All checks met | Pass | |
@@ -106,21 +106,21 @@ API tests send HTTP requests straight to the server, without a browser. They che
 | 31 | API-31: other users' orders | Access control | Another user requests the order; ids 999999 and `abc` | `404 Order not found.`; `404`; `400` | As expected | Pass | |
 | 32 | API-32: stock rechecked at checkout | Concurrency | Two users: B buys all 6 teapots before A; B buys 5 of 9 scarves before A | A gets `409` "now out of stock", cart unchanged; A gets `409` "only 4 of Knit Scarf left" | As expected | Pass | Covers manual cases TC-CHK-024 and 025 at the API level |
 
-## Manual Test Cases Covered by Automation
+## Test Cases Covered by Automation
 
-TC-CAT-001, 003, 005, 008, 012, 014, 018, 019 · TC-CART-002, 003, 007, 010, 013, 015, 016, 018, 019 · TC-CHK-005, 006, 007, 013, 016, 021 (expired-card part only). That's 23 cases: 21 of the 49 High priority cases, plus TC-CAT-014 and TC-CART-010 (Medium).
+The UI tests automate **21 of the 49 test cases**: TC-CAT-001, 003, 005, 008, 012, 018, 019 · TC-CART-002, 003, 007, 013, 015, 016, 018, 019 · TC-CHK-005, 006, 007, 013, 016, 021 (expired-card part only).
 
-These cases are **not** marked as passed in the manual test case tables. Automation and manual testing are recorded separately; the manual columns are only for tests run by hand.
+Two UI tests are extra checks that don't belong to a test case: "%" search (special characters) and the 10-per-product limit.
 
-## Not Automated (and Why)
+All 49 test cases were also run step by step in Google Chrome. Those results are recorded in the [test cases](test-cases/) and the [execution checklist](manual-test-execution.md), separately from this report.
 
-| Area | Reason |
+## Not Automated as UI Tests (and Why)
+
+| Test cases | Reason |
 |---|---|
-| Phone and tablet layouts (TC-UI-001 – 008) | Judging layout needs human eyes. Automating it would need screenshot comparison, which is beyond Version 1. |
-| Firefox and Safari (TC-UI-010, 011) | Only Chromium is set up. Adding `firefox` and `webkit` projects to `playwright.config.js` would cover them. |
-| Two users buying the last item (TC-CHK-024, 025) in the browser | Covered at the API level by API-32. A browser version is a good next candidate. |
-| Back button and double-click cases (TC-ACC-024, TC-CHK-011, 012) | Browser-specific behavior (page caching, timing). Better checked by hand first, then automated if a defect is found. |
-| Keyboard use (TC-UI-012) | Better judged manually in Version 1. |
+| Phone-size layout (TC-UI-001, 003) | Judging layout needs human eyes. Automating it well would need screenshot comparison, which is beyond Version 1. These cases were checked in Chrome and the screenshots reviewed. |
+| Two users buying the last item (TC-CHK-024, 025) | Covered at the API level by API-32. A browser version is a good next candidate. |
+| Remaining catalog, account, cart, and checkout cases | Many are covered by the API tests (e.g. login errors in API-14, separate carts in API-26, order privacy in API-31). The rest are good candidates for Version 2. |
 
 ## Issues Found
 

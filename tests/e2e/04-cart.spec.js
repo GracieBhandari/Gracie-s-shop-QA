@@ -46,7 +46,7 @@ test('TC-CART-007: out-of-stock product cannot be added', async ({ page }) => {
   await expect(page.getByTestId('quantity-value')).toHaveCount(0);
 });
 
-test('TC-CART-010: cannot add more than 10 of one product', async ({ page }) => {
+test('Cart: cannot add more than 10 of one product', async ({ page }) => {
   await registerNewUser(page);
   await addToCartViaApi(page, 6, 10);
   await page.goto('/product.html?id=6');

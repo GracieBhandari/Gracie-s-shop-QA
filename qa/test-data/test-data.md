@@ -48,78 +48,53 @@ All values below match the starting data created by `npm run seed`. Run it befor
 
 ## 3. Search Terms
 
-| Search term | Expected result | Why |
+| Search term | Expected result | Used in |
 |---|---|---|
-| `Dotted Notebook` | 1 product: Dotted Notebook | Exact name |
-| `MUG` | 1 product: Stoneware Coffee Mug | Case-insensitive |
-| `linen` | 2 products: Linen Cushion Cover, Linen Apron | Matches several products |
-| `dishwasher` | 1 product: Stoneware Coffee Mug | Matches the description only |
-| `   mug   ` | 1 product: Stoneware Coffee Mug | Leading and trailing spaces are ignored |
-| `xyz123` | 0 products | No match |
-| `%` | 0 products | `%` is a SQL wildcard and must be treated as plain text |
-| `_` | 0 products | `_` is a SQL wildcard and must be treated as plain text |
-| `<script>alert(1)</script>` | 0 products, text shown safely, no pop-up | Input must not run as code |
+| `Dotted Notebook` | 1 product: Dotted Notebook | TC-CAT-007 |
+| `MUG` | 1 product: Stoneware Coffee Mug (search ignores case) | TC-CAT-008 |
+| `xyz123` | 0 products, with a "No products match" message | TC-CAT-012 |
+| `teapot` | 1 product: Enamel Teapot | TC-UI-009 |
 
 ## 4. Registration Values
 
-| Field | Valid examples | Invalid examples | Expected error |
+| Field | Valid | Invalid | Expected error | Used in |
+|---|---|---|---|---|
+| All fields | | Empty | "Please enter your name." / "Please enter a valid email address." / "Password must be at least 8 characters." | TC-ACC-002 |
+| Password | `Pass1234` (8 characters) | `Pass123` (7 characters) | "Password must be at least 8 characters." | TC-ACC-004 |
+| Confirm password | Same as password | `Password124` when the password is `Password123` | "Passwords do not match." | TC-ACC-007 |
+| Email | A new email, e.g. `qa.usera@example.com` | `shopper@example.com` (already registered) | "An account with this email already exists." | TC-ACC-001, 008 |
+
+## 5. Login Values
+
+| Email | Password | Expected result | Used in |
 |---|---|---|---|
-| Name | `QA User A`; 50 characters (below) | Empty; only spaces; 51 characters (below) | "Please enter your name." / "Name must be 50 characters or fewer." |
-| Email | `qa.usera@example.com`; `QA.UserA@Example.com` | `gracie`; `gracie@`; `gracie@mail`; `gracie @mail.com` | "Please enter a valid email address." |
-| Password | `Pass1234` (8 characters); 72 characters (below) | `Pass123` (7); `Password` (no number); `12345678` (no letter); 73 characters (below) | "Password must be at least 8 characters." / "Password must include at least one letter and one number." / "Password is too long." |
+| `shopper@example.com` | `Password123` | Logged in as Test Shopper | TC-ACC-015 |
+| `shopper@example.com` | `WrongPass1` | "Incorrect email or password." | TC-ACC-016 |
+| `nobody@example.com` | `Password123` | "Incorrect email or password." (same message, so it doesn't reveal which emails exist) | TC-ACC-017 |
 
-**Exact-length strings:**
+## 6. Checkout Values
 
-| Purpose | Value | Length |
+**Valid checkout details:** Full name `Test Shopper`, Street address `1 Main St`, City `Springfield`, ZIP code `12345`, Card number `4242 4242 4242 4242`, Expiry `12/30`, Security code `123`.
+
+| Field | Value | Expected result | Used in |
+|---|---|---|---|
+| All fields | Empty | 7 field errors (see the test case) | TC-CHK-013 |
+| Card number | `4242 4242 4242 4241` (fails the Luhn check) | "Please enter a valid card number." | TC-CHK-016 |
+| Expiry | The **previous** month (e.g. `09/26` in October 2026) | "This card has expired or the month is not valid." | TC-CHK-021 |
+| Expiry | The **current** month (e.g. `10/26` in October 2026) | Accepted: a card is valid until the end of its expiry month | TC-CHK-021 |
+
+## 7. Cart Total Examples
+
+| Cart contents | Item count | Expected total | Used in |
+|---|---|---|---|
+| Stoneware Coffee Mug × 2 | 2 | $29.98 | TC-CHK-001, 005 |
+| Stoneware Coffee Mug × 3 | 3 | $44.97 | TC-CART-012 |
+| Mug × 3, Dotted Notebook × 2, Washi Tape Pack × 1 | 6 | $78.94 | TC-CART-013 |
+| Woven Throw Blanket × 1, Gel Pen Set × 2 | 3 | $69.97 | TC-CHK-008 |
+
+## 8. Screen Sizes
+
+| Device type | Width × height | Used in |
 |---|---|---|
-| Name, 50 characters (valid) | `Gracie aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | 50 |
-| Name, 51 characters (invalid) | `Gracie aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab` | 51 |
-| Password, 72 characters (valid) | `Password1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` | 72 |
-| Password, 73 characters (invalid) | `Password1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy` | 73 |
-
-**Security value:** Name `<img src=x onerror=alert(1)>` must appear as plain text in the header greeting, with no pop-up.
-
-## 5. Checkout Values
-
-### Shipping address
-
-| Field | Valid | Invalid |
-|---|---|---|
-| Full name | `Test Shopper` | Empty; only spaces |
-| Street address | `1 Main St` | Empty; only spaces |
-| City | `Springfield` | Empty; only spaces |
-| ZIP code | `12345`; `12345-6789` | `1234`; `123456`; `abcde`; `12345-67` |
-
-### Payment
-
-| Field | Valid | Invalid |
-|---|---|---|
-| Card number | `4242 4242 4242 4242`; `4242424242424242`; `4242-4242-4242-4242`; `5555 5555 5555 4444` | `4242 4242 4242 4241` (fails Luhn check); `1234`; `abcd efgh ijkl mnop`; empty |
-| Expiry (MM/YY) | `12/30`; the **current** month (e.g. `10/26` in October 2026) | The **previous** month (e.g. `09/26` in October 2026); `13/30`; `00/30`; `1/30`; `12-30`; empty |
-| Security code | `123`; `1234` | `12`; `12345`; `abc`; empty |
-
-**Expected payment errors:**
-- Card number: "Please enter a valid card number."
-- Expiry wrong format: "Please enter the expiry date as MM/YY."
-- Expiry in the past or month not 01–12: "This card has expired or the month is not valid."
-- Security code: "Please enter the 3 or 4 digit security code."
-
-## 6. Cart Total Examples
-
-Use these to check the total calculation.
-
-| Cart contents | Item count | Expected total |
-|---|---|---|
-| Stoneware Coffee Mug × 3 | 3 | $44.97 |
-| Mug × 3, Dotted Notebook × 2, Washi Tape Pack × 1 | 6 | $78.94 |
-| Gel Pen Set × 3 | 3 | $29.97 |
-| Woven Throw Blanket × 1, Gel Pen Set × 2 | 3 | $69.97 |
-| Round Wall Mirror × 5 | 5 | $349.95 |
-
-## 7. Screen Sizes
-
-| Device type | Width × height |
-|---|---|
-| Phone | 375 × 812 |
-| Tablet | 768 × 1024 |
-| Desktop | 1280 × 800 |
+| Phone | 375 × 812 | TC-UI-001, 003 |
+| Desktop | 1280 × 800 | All other test cases |
