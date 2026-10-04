@@ -69,8 +69,9 @@ Planned for Version 1:
 │   ├── test-cases/
 │   ├── test-data/
 │   └── bug-reports/
-└── tests/
-    └── e2e/         # Playwright automated tests
+├── tests/
+│   └── e2e/         # Playwright automated tests
+└── playwright.config.js
 ```
 
 ## Getting Started
@@ -175,18 +176,29 @@ Testing is mainly manual, following written test cases, with a small Playwright 
 |---|---|---|
 | Test plan | [`qa/test-plan.md`](qa/test-plan.md) | Written |
 | Test scenarios | [`qa/test-scenarios.md`](qa/test-scenarios.md) | Written |
-| Test cases | [`qa/test-cases/`](qa/test-cases/) | Written; not yet executed |
+| Test cases | [`qa/test-cases/`](qa/test-cases/) | Written, grouped by priority; manual execution not yet started |
 | Test data | [`qa/test-data/test-data.md`](qa/test-data/test-data.md) | Written |
-| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | Template ready; testing not yet started |
-| Test execution report | `qa/test-execution-report.md` | Not started |
+| Manual test execution (High priority checklist) | [`qa/manual-test-execution.md`](qa/manual-test-execution.md) | Ready; not yet executed |
+| Bug reports | [`qa/bug-reports/`](qa/bug-reports/) | 1 open (BUG-001) |
+| Automation report | [`qa/automation-report.md`](qa/automation-report.md) | 17 tests, 17 passed |
 
 ## Automated Tests
 
-_Playwright end-to-end tests will be added in [`tests/e2e/`](tests/e2e/). Instructions for running them will go here._
+17 Playwright end-to-end tests in [`tests/e2e/`](tests/e2e/) cover the main user journeys: the app loading, browsing the catalog, search, adding to the cart, cart quantities and totals, checkout validation, and a successful order. Each test is named after the manual test case it automates (e.g. `TC-CART-013`). See the [automation report](qa/automation-report.md) for the results.
+
+```bash
+npx playwright install chromium   # first time only: download the test browser
+npm run test:e2e                  # run the tests
+npx playwright show-report        # open the HTML report
+```
+
+The tests start their own copy of the app on port 3100 with a **separate test database**, reset with the seed data before every run, so they never change your own data.
 
 ## Defects Found
 
-_Real defects found during testing will be summarized here, with links to the full bug reports._
+| ID | Title | Severity | Status |
+|---|---|---|---|
+| [BUG-001](qa/bug-reports/BUG-001.md) | "Add to cart" shows "Something went wrong" after the database is reset while a user is logged in | Low | Open |
 
 ## Screenshots
 

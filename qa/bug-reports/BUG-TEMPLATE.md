@@ -10,7 +10,8 @@ How to use this template:
 
 | Field | Value |
 |---|---|
-| **ID** | BUG-XXX |
+| **Bug ID** | BUG-XXX |
+| **Title** | Short, specific title |
 | **Reported by** | Gracie Bhandari |
 | **Date found** | YYYY-MM-DD |
 | **Severity** | Critical / High / Medium / Low (see the [test plan](../test-plan.md#8-defect-management)) |
@@ -41,9 +42,9 @@ What should happen, according to the requirement or business rule.
 
 What actually happens. Quote exact messages and values.
 
-## Evidence
+## Evidence / Screenshot
 
-Screenshots or screen recordings (save them next to this file and link them), and any browser console errors.
+Screenshots or screen recordings (save them next to this file and link them, e.g. `![Cart total](BUG-XXX-screenshot.png)`), and any browser console errors.
 
 ## Notes
 

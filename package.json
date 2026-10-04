@@ -14,11 +14,15 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "node --watch server/server.js",
-    "seed": "node server/db/seed.js"
+    "seed": "node server/db/seed.js",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "express": "^5.2.1",
     "express-session": "^1.19.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
   }
 }
