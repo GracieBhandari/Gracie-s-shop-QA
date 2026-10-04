@@ -1,5 +1,8 @@
-// Playwright configuration for Gracie's Shop end-to-end tests.
-// Run with: npm run test:e2e
+// Playwright configuration for Gracie's Shop automated tests.
+// Two groups ("projects"):
+//   e2e - drives a real Chromium browser through the web pages   (npm run test:e2e)
+//   api - sends HTTP requests straight to the API, no browser     (npm run test:api)
+// Run both with: npm test
 
 const os = require('node:os');
 const path = require('node:path');
@@ -11,8 +14,6 @@ const PORT = 3100;
 const TEST_DB_PATH = path.join(os.tmpdir(), 'gracies-shop-e2e.db');
 
 module.exports = defineConfig({
-  testDir: './tests/e2e',
-
   // Tests run one at a time, in a predictable order. They share one database,
   // and some of them change stock levels.
   workers: 1,
@@ -31,7 +32,8 @@ module.exports = defineConfig({
   },
 
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'e2e', testDir: './tests/e2e', use: { ...devices['Desktop Chrome'] } },
+    { name: 'api', testDir: './tests/api' },
   ],
 
   // Before the tests: reset the test database with the seed data, then start the app

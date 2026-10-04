@@ -4,8 +4,9 @@
 |---|---|
 | **Project** | Gracie's Shop, a small e-commerce web application |
 | **Version under test** | 1.0 (all Version 1 features) |
-| **Prepared by** | Gracie Bhandari |
-| **Document status** | Draft |
+| **Owner and approver** | Gracie Bhandari (QA lead) |
+| **Prepared with** | Claude Code (AI assistant), at Gracie's direction |
+| **Document status** | Approved for Version 1 testing |
 
 ---
 

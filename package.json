@@ -15,7 +15,9 @@
     "start": "node server/server.js",
     "dev": "node --watch server/server.js",
     "seed": "node server/db/seed.js",
-    "test:e2e": "playwright test"
+    "test": "playwright test",
+    "test:e2e": "playwright test --project=e2e",
+    "test:api": "playwright test --project=api"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
