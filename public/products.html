@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop · Gracie's Shop</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/js/products.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Gracie's Shop</a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/products.html" aria-current="page">Shop</a>
+      </nav>
+      <form class="search-form" action="/products.html" role="search">
+        <input type="search" name="search" placeholder="Search products" aria-label="Search products" data-testid="search-input">
+        <button class="button" type="submit" data-testid="search-button">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title" id="page-title">All products</h1>
+    <nav class="category-filter" id="category-filter" aria-label="Filter by category" data-testid="category-filter"></nav>
+    <p class="results-summary" id="results-summary" data-testid="results-summary" aria-live="polite"></p>
+    <div class="product-grid" id="product-list" data-testid="product-list">
+      <p class="message">Loading products…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Gracie's Shop · A QA portfolio project</div>
+  </footer>
+</body>
+</html>

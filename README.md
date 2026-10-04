@@ -2,7 +2,7 @@
 
 A small e-commerce web application, built and then tested end to end as a QA portfolio project.
 
-> **Status:** 🚧 In development. Project setup is complete; the application has not been built yet.
+> **Status:** 🚧 In development. The product catalog is built; cart, accounts, and checkout are next.
 
 ---
 
@@ -36,11 +36,11 @@ The project has two goals:
 
 Planned for Version 1:
 
-- [ ] Home page
-- [ ] Product catalog
-- [ ] Product categories
-- [ ] Product search
-- [ ] Product details
+- [x] Home page
+- [x] Product catalog
+- [x] Product categories
+- [x] Product search
+- [x] Product details
 - [ ] Shopping cart (add, remove, change quantity, total calculation)
 - [ ] User registration and login
 - [ ] Checkout

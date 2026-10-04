@@ -7,7 +7,7 @@ const db = require('../db/database');
 const router = express.Router();
 
 const PRODUCT_COLUMNS = `
-  p.id, p.name, p.description, p.price_cents, p.stock,
+  p.id, p.name, p.description, p.emoji, p.price_cents, p.stock,
   c.slug AS category, c.name AS category_name
 `;
 
